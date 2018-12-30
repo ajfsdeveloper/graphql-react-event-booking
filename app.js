@@ -18,10 +18,9 @@ app.use('/graphql', graphqlHttp({
   graphiql: true
 }))
 
-mongoose.connect(`
-mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@graphql-react-event-booking-ogtee.mongodb.net/${process.env.MONGO_DB}?retryWrites=true
-`).then(() => {
+mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ds145484.mlab.com:45484/graphql-react-event-booking`).then(() => {
+  console.log('db', 'connected')
   app.listen(3000)
 }).catch(err => {
-  console.log(err)
+  console.log('db', err)
 })
